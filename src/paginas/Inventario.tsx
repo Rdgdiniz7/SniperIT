@@ -11,10 +11,20 @@ export default function Inventario({onDetalhes,onEditar,onNovo,onImportar}:{onDe
  const[selecionados,setSelecionados]=useState<Set<string>>(new Set());
  const lista=useMemo(()=>ativos.filter((a:any)=>!a.deletedAt).filter((a:any)=>(!q||[a.hostname,a.serialNumber,a.ipAddress,a.model,a.location,a.siteCode].join(' ').toLowerCase().includes(q.toLowerCase()))&&(vendor==='todos'||a.vendor===vendor)&&(status==='todos'||a.currentStatus===status)&&(location==='todos'||a.location===location)&&(categoria==='todos'||a.simpleDeviceCategory===categoria)),[ativos,q,vendor,status,location,categoria]);
  const valores=(campo:keyof Ativo)=>[...new Set(ativos.map((a:any)=>a[campo]).filter(Boolean))].sort();
- const visiveis=lista.map(a=>a.id);const todosMarcados=visiveis.length>0&&visiveis.every(id=>selecionados.has(id));
- const selecionadosAtivos=ativos.filter(a=>selecionados.has(a.id));
+ const visiveis=lista.map((a:Ativo)=>a.id);const todosMarcados=visiveis.length>0&&visiveis.every((id:string)=>selecionados.has(id));
+ const selecionadosAtivos=ativos.filter((a:Ativo)=>selecionados.has(a.id));
  const marcar=(id:string)=>setSelecionados(s=>{const n=new Set(s);n.has(id)?n.delete(id):n.add(id);return n});
- const marcarTodos=()=>setSelecionados(s=>{const n=new Set(s);if(todosMarcados)visiveis.forEach(id=>n.delete(id));else visiveis.forEach(id=>n.add(id));return n});
+ const marcarTodos=()=>setSelecionados(s=>{
+  const n=new Set(s);
+
+  if(todosMarcados){
+    visiveis.forEach((id:string)=>n.delete(id));
+  }else{
+    visiveis.forEach((id:string)=>n.add(id));
+  }
+
+  return n;
+});
  const log=(formato:string)=>registrar({tipo:'EXPORTACAO',descricao:`${selecionadosAtivos.length} ativo(s) selecionado(s) exportados em ${formato}`});
  return <>
   <div className="page-title"><div><h1>Inventário CMDB</h1><p>{lista.length} equipamentos exibidos • selecione registros para exportação personalizada.</p></div><div className="page-actions"><button onClick={onImportar}><Upload/> Adicionar em massa</button><button className="primary" onClick={onNovo}>+ Adicionar ativo</button></div></div>

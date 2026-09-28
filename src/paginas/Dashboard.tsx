@@ -19,7 +19,8 @@ export default function Dashboard(){
   const {ativos}=useInventario(); const {historico}=useSistema();
   const base=useMemo(()=>ativos.filter((a:any)=>!a.deletedAt),[ativos]);
   const [pais,setPais]=useState('todos'),[local,setLocal]=useState('todos'),[grupo,setGrupo]=useState('todos'),[categoria,setCategoria]=useState('todos'),[vendor,setVendor]=useState('todos'),[status,setStatus]=useState('todos'),[ano,setAno]=useState('todos');
-  const opcoes=(campo:(a:any)=>unknown)=>[...new Set(base.map(campo).map(texto))].sort();
+  const opcoes = (campo: (a: any) => unknown): string[] =>
+  Array.from(new Set<string>(base.map(campo).map(texto))).sort();
   const filtrados=useMemo(()=>base.filter((a:any)=>(pais==='todos'||texto(a.country)===pais)&&(local==='todos'||texto(a.location)===local)&&(grupo==='todos'||texto(a.deviceGroup)===grupo)&&(categoria==='todos'||texto(a.simpleDeviceCategory)===categoria)&&(vendor==='todos'||texto(a.vendor)===vendor)&&(status==='todos'||texto(a.currentStatus)===status)&&(ano==='todos'||texto(a.plannedReplacementYear)===ano)),[base,pais,local,grupo,categoria,vendor,status,ano]);
   const limpar=()=>{setPais('todos');setLocal('todos');setGrupo('todos');setCategoria('todos');setVendor('todos');setStatus('todos');setAno('todos')};
   const ativosOk=filtrados.filter((a:any)=>['ativo','active'].includes(texto(a.currentStatus).toLowerCase())).length;
