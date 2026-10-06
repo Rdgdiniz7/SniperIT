@@ -4,3 +4,118 @@
 .dashboard-filters{padding:16px 18px}.filter-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:13px}.filter-head b,.filter-head small{display:block}.filter-head small{font-size:11px;color:var(--muted);margin-top:3px}.filter-head button{border:1px solid var(--border);background:white;border-radius:8px;padding:8px 10px;display:flex;align-items:center;gap:6px;color:#475467}.filter-head button svg{width:15px}.dashboard-filter-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.dashboard-filter-grid select{min-width:0;width:100%}.filter-result{font-size:11px;color:var(--muted);margin-top:10px}.cards.cards-8{grid-template-columns:repeat(4,minmax(0,1fr))}.danger-icon{background:#fef2f2;color:#dc2626}.warn-icon{background:#fffbeb;color:#d97706}.money-metric{font-size:17px!important}.panel-subtitle{font-size:12px;color:var(--muted);margin:-8px 0 14px}.replacement-chart{height:340px}.quality-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quality-list>div{border:1px solid #edf0f5;background:#f8fafc;border-radius:9px;padding:14px;display:flex;align-items:center;justify-content:space-between}.quality-list span{font-size:12px;color:#475467}.quality-list b{font-size:18px}.q-warn{color:#b54708}.q-ok{color:#027a48}.dashboard-history{display:grid;grid-template-columns:1fr 1fr;column-gap:24px}.dashboard-history .event{min-width:0}@media(max-width:1200px){.cards.cards-8{grid-template-columns:repeat(2,1fr)}.dashboard-filter-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:760px){.cards.cards-8,.dashboard-filter-grid,.quality-list,.dashboard-history{grid-template-columns:1fr}.filter-head{align-items:flex-start;flex-direction:column}.chart{height:260px}}
 /* CMDB v4 - seleção, exportação e New Devices */
 .page-actions{display:flex;gap:9px;flex-wrap:wrap}.page-actions button{border:1px solid var(--border);background:#fff;border-radius:8px;padding:10px 13px;display:flex;align-items:center;gap:7px}.page-actions svg{width:17px}.inventory-filters{grid-template-columns:minmax(260px,2fr) repeat(4,1fr)}.selection-toolbar{position:sticky;top:76px;z-index:8;background:#172033;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;gap:15px;box-shadow:0 5px 18px #0f172a1f}.selection-toolbar>div{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.selection-toolbar>div:first-child svg{width:18px}.selection-toolbar span{font-size:11px;color:#94a3b8;margin-left:4px}.selection-toolbar button{border:1px solid #334155;background:#1e293b;color:#fff;border-radius:7px;padding:7px 9px;display:flex;align-items:center;gap:5px;font-size:11px}.selection-toolbar button:disabled{opacity:.35;cursor:not-allowed}.selection-toolbar button svg{width:14px}.check-col{width:38px;text-align:center!important}.check-col input{width:16px;height:16px}.row-selected td{background:#eff6ff}.import-intro{display:flex;align-items:flex-start;gap:12px}.import-intro h2{margin:2px 0 5px}.danger-mode.selected{border-color:#fda29b!important;background:#fef3f2!important;color:#b42318!important}.message{display:flex;align-items:center;gap:7px}.message svg{width:17px;color:#027a48}.inline-export{grid-template-columns:repeat(3,max-content);display:grid}.new-device-cards{grid-template-columns:repeat(3,1fr)}.new-search{max-width:600px}.empty svg{width:18px;vertical-align:middle;margin-right:5px}@media(max-width:1200px){.inventory-filters{grid-template-columns:1fr 1fr 1fr}.inline-export{grid-template-columns:1fr}}@media(max-width:760px){.page-actions,.selection-toolbar{align-items:stretch;flex-direction:column}.selection-toolbar{position:static}.inventory-filters,.new-device-cards{grid-template-columns:1fr}}
+/* Layout da Barra de Filtros */
+.inventory-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Campo de busca ocupa mais espaço proporcional */
+.inventory-filters .search {
+  flex: 2 1 240px;
+  min-width: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inventory-filters .search input {
+  width: 100%;
+  height: 38px;
+  padding-left: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: #ffffff;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+/* Selects fluidos e proporcionais */
+.inventory-filters select {
+  flex: 1 1 150px;
+  min-width: 130px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  background-color: #ffffff;
+  color: #334155;
+  font-size: 0.875rem;
+  outline: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Efeito Hover e Focus Conceitual */
+.inventory-filters select:hover,
+.inventory-filters .search input:hover {
+  border-color: #cbd5e1;
+}
+
+.inventory-filters select:focus,
+.inventory-filters .search input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+/* ========================================================
+   ESTILIZAÇÃO DA IDENTIDADE VISUAL STELLANTIS
+   ======================================================== */
+
+/* Ajuste do cabeçalho da Sidebar */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Badge container que envolve a logo com fundo branco */
+.stellantis-logo-badge {
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  min-width: 42px;
+  height: 42px;
+}
+
+/* Imagem da Logo */
+.stellantis-logo {
+  max-height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Textos da marca */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* Opcional: Se quiser usar a logo em fundo claro no cabeçalho superior */
+.header-logo-light {
+  height: 32px;
+  mix-blend-mode: multiply; /* Sumir com fundo branco em áreas claras */
+}

@@ -19,6 +19,10 @@ import {
 import { useState } from 'react';
 import { useSistema } from '../../contextos/SistemaContext';
 
+// Importação do logótipo da Stellantis (certifique-se de salvar o ficheiro na pasta src/assets/)
+// @ts-ignore
+import logoStellantis from '../../assets/logo-stellantis.png';
+
 export type Pagina =
   | 'dashboard'
   | 'inventario'
@@ -58,8 +62,11 @@ export default function Layout({
   return (
     <div className="app-shell">
       <aside className={`sidebar ${aberto ? 'aberto' : ''}`}>
+        {/* Cabeçalho da Barra Lateral com Logótipo Stellantis */}
         <div className="brand">
-          <div className="brand-icon">S</div>
+          <div className="stellantis-logo-badge">
+            <img src={logoStellantis} alt="Stellantis" className="stellantis-logo" />
+          </div>
           <div>
             <strong>Sniper IT CMDB</strong>
             <span>Network Asset Management</span>
